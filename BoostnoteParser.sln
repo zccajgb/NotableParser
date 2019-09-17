@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoostnoteParser", "BoostnoteParser\BoostnoteParser.csproj", "{C169930F-D72A-410B-8B78-841B05757CCD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C169930F-D72A-410B-8B78-841B05757CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C169930F-D72A-410B-8B78-841B05757CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C169930F-D72A-410B-8B78-841B05757CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C169930F-D72A-410B-8B78-841B05757CCD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8247C179-5002-4521-964D-6E5270554F90}
+	EndGlobalSection
+EndGlobal
