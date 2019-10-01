@@ -6,8 +6,16 @@ namespace BoostnoteParser
 {
     public class TodoItem
     {
+        private object str;
+
         public bool Completed { get; set; }
         public string Item { get; set; }
+        public string FileCode { get; }
+
+        public TodoItem(string str, string fileCode) : this(str)
+        {
+            this.FileCode = fileCode;
+        }
 
         public TodoItem(string str)
         {
@@ -20,7 +28,9 @@ namespace BoostnoteParser
             var str = Completed ? "- [x]" : "- [ ]";
             str = str + $" {Item}";
             str = str.Replace("\r", "").Replace("\n", "");
-            return str;
+
+            if (String.IsNullOrEmpty(FileCode)) return str;
+            return $"{str} *({FileCode})*";
         }
     }
 }

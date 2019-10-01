@@ -48,13 +48,13 @@ namespace BoostnoteParser
             this.TodoList.OrderBy(x => x.Completed ? 1 : 0); 
         }
 
-        public void ProcessString(List<string> lst)
+        public void ProcessString(List<string> lst, string fileCode)
         {
             var newTodoItem = "- [ ]";
             var completedItem = "- [x]";
 
             var todoItems = lst.Where(l => l.Contains(newTodoItem) || l.Contains(completedItem));
-            this.TodoList.AddRange(todoItems.Select(str => new TodoItem(str)));
+            this.TodoList.AddRange(todoItems.Select(str => new TodoItem(str, fileCode)));
         }
 
         public StreamWriter GetStreamWriter(string path2)
@@ -65,6 +65,15 @@ namespace BoostnoteParser
         public void AddItem(TodoItem item)
         {
             this.TodoList.Add(item);
+        }
+
+        internal void ProcessString(List<string> lst)
+        {
+            var newTodoItem = "- [ ]";
+            var completedItem = "- [x]";
+
+            var todoItems = lst.Where(l => l.Contains(newTodoItem) || l.Contains(completedItem));
+            this.TodoList.AddRange(todoItems.Select(str => new TodoItem(str)));
         }
     }
 }

@@ -23,7 +23,7 @@ namespace BoostnoteParser
         {
             ReadDefinitions();
 
-            foreach (var path in Directory.EnumerateFiles(notesFolderPath, "*.cson", SearchOption.AllDirectories))
+            foreach (var path in Directory.EnumerateFiles(notesFolderPath, "*.md", SearchOption.AllDirectories))
             {
                 if (path != defnNotePath) ReadNote(path);
             }
@@ -43,11 +43,7 @@ namespace BoostnoteParser
                 }
                 foreach (var line in defnParser.Definitions)
                 {
-                    streamWriter.WriteLine(line.Defintion);
-                }
-                foreach (var line in defnParser.StringList.Skip(defnParser.StringList.Count() - 6))
-                {
-                    streamWriter.WriteLine(line.Replace("\n", "").Replace("\r", ""));
+                    streamWriter.WriteLine(line.ToString());
                 }
             }
         }
@@ -57,9 +53,10 @@ namespace BoostnoteParser
             foreach (var item in noteParser.Definitions)
             {
                 var matchingItem = defnParser.Definitions.FirstOrDefault(x => x.Defintion == item.Defintion);
-                defnParser.AddItem(item);
+                if (matchingItem == null) defnParser.AddItem(item);
             }
-            defnParser.OrderDefinitions();
+
+            defnParser.OrderDefintions();
         }
 
         private void ReadNote(string path)
@@ -69,7 +66,9 @@ namespace BoostnoteParser
                 noteParser.ReadStream(streamReader);
             }
 
-            noteParser.ProcessString(noteParser.StringList);
+            var fileCode = path.Substring(39, 6);
+
+            noteParser.ProcessString(noteParser.StringList, fileCode);
         }
 
         private void ReadDefinitions()

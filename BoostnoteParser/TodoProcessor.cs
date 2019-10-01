@@ -25,7 +25,7 @@ namespace BoostnoteParser
         {
             ReadTodos();
 
-            foreach (var path in Directory.EnumerateFiles(notePath, "*.cson", SearchOption.AllDirectories))
+            foreach (var path in Directory.EnumerateFiles(notePath, "*.md", SearchOption.AllDirectories))
             {
                 if (path != todoPath) ReadNote(path);
             }
@@ -52,10 +52,6 @@ namespace BoostnoteParser
                 foreach (var line in todoParser.TodoList.Where(x => x.Completed))
                 {
                     streamWriter.WriteLine(line.ToString());
-                }
-                foreach (var line in todoParser.StringList.Skip(todoParser.StringList.Count() - 6))
-                {
-                    streamWriter.WriteLine(line.Replace("\n", "").Replace("\r", ""));
                 }
             }
         }
@@ -84,7 +80,9 @@ namespace BoostnoteParser
                 noteParser.ReadStream(streamReader);
             }
 
-            noteParser.ProcessString(noteParser.StringList);
+            var fileCode = path.Substring(39, 6);
+
+            noteParser.ProcessString(noteParser.StringList, fileCode);
         }
 
         private void ReadTodos()

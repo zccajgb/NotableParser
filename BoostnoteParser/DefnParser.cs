@@ -27,11 +27,6 @@ namespace BoostnoteParser
             return new StreamWriter(defnNotePath);
         }
 
-        internal void OrderDefinitions()
-        {
-            this.Definitions.OrderBy(x => x.Defintion);
-        }
-
         internal StreamReader GetStreamReader(string path)
         {
             return new StreamReader(path);
@@ -43,17 +38,17 @@ namespace BoostnoteParser
             this.StringList = read.Split("\n").ToList();
         }
 
-        internal void ProcessString(List<string> stringList)
+        internal void ProcessString(List<string> stringList, string fileCode)
         {
-            var defn = "> **D";
-            var defn2 = "> ** D";
-            var defn3 = ">** D";
-            var defn4 = ">**D";
+            var defn = "> *D";
+            var defn2 = "> * D";
+            var defn3 = ">* D";
+            var defn4 = ">*D";
 
             var defItems = stringList.Where(l => l.Contains(defn) || l.Contains(defn2) || l.Contains(defn3) || l.Contains(defn4));
             if (defItems != null && defItems.Count() > 0)
             {
-                this.Definitions.AddRange(defItems.Select(x => new DefnItem(x)));
+                this.Definitions.AddRange(defItems.Select(x => new DefnItem(x, fileCode)));
             }
         }
 
@@ -65,6 +60,25 @@ namespace BoostnoteParser
         internal void AddItem(DefnItem item)
         {
             this.Definitions.Add(item);
+        }
+
+        internal void OrderDefintions()
+        {
+            this.Definitions = this.Definitions.OrderBy(x => x.Defintion).ToList();
+        }
+
+        internal void ProcessString(List<string> stringList)
+        {
+            var defn = "> *D";
+            var defn2 = "> * D";
+            var defn3 = ">* D";
+            var defn4 = ">*D";
+
+            var defItems = stringList.Where(l => l.Contains(defn) || l.Contains(defn2) || l.Contains(defn3) || l.Contains(defn4));
+            if (defItems != null && defItems.Count() > 0)
+            {
+                this.Definitions.AddRange(defItems.Select(x => new DefnItem(x)));
+            }
         }
     }
 }
