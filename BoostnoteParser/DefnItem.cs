@@ -12,11 +12,12 @@ namespace BoostnoteParser
         public DefnItem(string str, string fileCode) : this(str)
         {
             this.FileCode = fileCode;
+            this.Defintion = " - " + str.Trim().Substring(10).Trim();
         }
 
         public DefnItem(string str)
         {
-            this.Defintion = " - " + str.Trim().Substring(10).Trim();
+            this.Defintion = " " + str.Trim();
         }
 
         public override string ToString()

@@ -69,12 +69,9 @@ namespace BoostnoteParser
 
         internal void ProcessString(List<string> stringList)
         {
-            var defn = "> *D";
-            var defn2 = "> * D";
-            var defn3 = ">* D";
-            var defn4 = ">*D";
+            var defn = " - **";
 
-            var defItems = stringList.Where(l => l.Contains(defn) || l.Contains(defn2) || l.Contains(defn3) || l.Contains(defn4));
+            var defItems = stringList.Where(l => l.Contains(defn));
             if (defItems != null && defItems.Count() > 0)
             {
                 this.Definitions.AddRange(defItems.Select(x => new DefnItem(x)));

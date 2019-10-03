@@ -52,7 +52,7 @@ namespace BoostnoteParser
         {
             foreach (var item in noteParser.Definitions)
             {
-                var matchingItem = defnParser.Definitions.FirstOrDefault(x => x.Defintion == item.Defintion);
+                var matchingItem = defnParser.Definitions.FirstOrDefault(x => x.ToString() == item.ToString());
                 if (matchingItem == null) defnParser.AddItem(item);
             }
 
