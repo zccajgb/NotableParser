@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace BoostnoteParser
+namespace NotableParser
 {
     internal class DefinitionProcessor
     {

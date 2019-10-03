@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace BoostnoteParser
+namespace NotableParser
 {
     class Program
     {

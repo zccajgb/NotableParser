@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace BoostnoteParser
+namespace NotableParser
 {
     public class DefnItem
     {

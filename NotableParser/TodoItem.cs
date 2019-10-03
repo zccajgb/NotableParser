@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BoostnoteParser
+namespace NotableParser
 {
     public class TodoItem
     {
